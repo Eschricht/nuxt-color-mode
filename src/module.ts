@@ -4,7 +4,7 @@ import type { useCookie } from 'nuxt/app'
 export default defineNuxtModule<Partial<ModuleOptions>>({
   meta: {
     name: '@eschricht/nuxt-color-mode',
-    configKey: 'nuxtColorMode',
+    configKey: 'colorMode',
   },
   // Default configuration options of the Nuxt module
   defaults: {

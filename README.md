@@ -1,12 +1,3 @@
-<!--
-Get your module up and running quickly.
-
-Find and replace all on all files (CMD+SHIFT+F):
-- Name: Nuxt Color Mode
-- Package name: nuxt-color-mode
-- Description: My new Nuxt module
--->
-
 # Nuxt Color Mode
 
 [![npm version][npm-version-src]][npm-version-href]
@@ -21,13 +12,15 @@ This module is similar to the official module [@nuxt/color-mode](https://color-m
 It currently lack many features compared to the official module, for example, not being able to force a color mode for a specific page.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
-<!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/nuxt-color-mode?file=playground%2Fapp.vue) -->
+- [🏀 Online playground](https://stackblitz.com/github/Eschricht/nuxt-color-mode?file=playground%2Fapp.vue)
 <!-- - [📖 &nbsp;Documentation](https://example.com) -->
 
 ## Features
 
 <!-- Highlight some of the features your module provide here -->
-- 🤖 &nbsp;Auto detect system [color mode](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-Prefers-Color-Scheme), even on server side
+- 🚀 &nbsp;Full SSR support
+- 🍪 &nbsp;Cookie support
+- 🤖 &nbsp;Auto detect system [color mode](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-Prefers-Color-Scheme) (even on server side!)
 - 🎨 &nbsp;Customizable
 
 ## Quick Setup
@@ -46,7 +39,7 @@ That's it! You can now use Nuxt Color Mode in your Nuxt app ✨
 export default defineNuxtConfig({
   modules: ['@eschricht/nuxt-color-mode']
 
-  nuxtColorMode: {
+  colorMode: {
     // The preferred mode when cookie hasn't been set yet
     preference: 'system',
     // Fallback to use when system preference is unavailable
@@ -80,7 +73,7 @@ console.log(colorMode.system) // The system preference, i.e. 'dark'. - Readonly
 console.log(colorMode.value) // The resolved color mode, i.e. 'dark' or 'github-dark' if systemDarkName: 'github-dark' - Readonly
 
 function changeColorMode() {
-  colorMode.preference = 'some-other-value'
+  colorMode.preference = 'some-other-value' // Updates cookie value and HTML class is set to `<html class="some-other-value-mode">`
 }
 </script>
 ```

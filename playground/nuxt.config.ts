@@ -1,6 +1,7 @@
 export default defineNuxtConfig({
   modules: ['../src/module'],
-  nuxtColorMode: {
+
+  colorMode: {
     preference: 'system',
     classSuffix: '-hanniz',
     classPrefix: 'hanniz-',
