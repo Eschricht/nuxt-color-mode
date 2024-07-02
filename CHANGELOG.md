@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.0.3
+
+[compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.0.2...v1.0.3)
+
+### 🏡 Chore
+
+- Minor readme update ([3b48835](https://github.com/Eschricht/nuxt-color-mode/commit/3b48835))
+- Update configuration key ([8bacc76](https://github.com/Eschricht/nuxt-color-mode/commit/8bacc76))
+
+### ❤️ Contributors
+
+- Johannes Eschricht ([@Eschricht](http://github.com/Eschricht))
+
 ## v1.0.2
 
 [compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.0.1...v1.0.2)
