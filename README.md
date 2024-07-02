@@ -76,8 +76,8 @@ export default defineNuxtConfig({
 const colorMode = useColorMode()
 
 console.log(colorMode.preference) // The current value stored in cookie, i.e. 'system'
-console.log(colorMode.system) // The system preference, i.e. 'dark'.
-console.log(colorMode.value) // READONLY - The resolved color mode, i.e. 'dark' or 'github-dark' if systemDarkName: 'github-dark'
+console.log(colorMode.system) // The system preference, i.e. 'dark'. - Readonly
+console.log(colorMode.value) // The resolved color mode, i.e. 'dark' or 'github-dark' if systemDarkName: 'github-dark' - Readonly
 
 function changeColorMode() {
   colorMode.preference = 'some-other-value'
