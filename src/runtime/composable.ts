@@ -1,6 +1,12 @@
 import { useNuxtApp } from '#imports'
 
-export function useColorMode() {
+export interface ColorModeState {
+  preference: string
+  readonly system: 'dark' | 'light' | undefined
+  readonly value: string
+}
+
+export function useColorMode(): ColorModeState {
   const { $colorMode } = useNuxtApp()
 
   return $colorMode

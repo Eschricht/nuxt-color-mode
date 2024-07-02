@@ -1,3 +1,4 @@
+import type { ColorModeState } from './composable'
 import { defineNuxtPlugin, useCookie, useRequestHeaders } from '#app'
 import { useHead, useState, computed, reactive } from '#imports'
 import { preference, cookieOptions, cookieName, classPrefix, classSuffix, dataValue, fallback, systemDarkName, systemLightName } from '#color-mode-options'
@@ -7,11 +8,7 @@ function isValidSystemColorMode(value: string): value is 'dark' | 'light' {
 }
 
 export default defineNuxtPlugin<{
-  colorMode: {
-    preference: string
-    readonly system: 'dark' | 'light' | undefined
-    readonly value: string
-  }
+  colorMode: ColorModeState
 }>((_nuxtApp) => {
   const cookieValue = useCookie(cookieName, {
     ...cookieOptions,
