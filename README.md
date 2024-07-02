@@ -37,7 +37,7 @@ That's it! You can now use Nuxt Color Mode in your Nuxt app ✨
 
 ```ts
 export default defineNuxtConfig({
-  modules: ['@eschricht/nuxt-color-mode']
+  modules: ['@eschricht/nuxt-color-mode'],
 
   colorMode: {
     // The preferred mode when cookie hasn't been set yet
@@ -63,7 +63,15 @@ export default defineNuxtConfig({
 })
 ```
 
-### Composable
+## Composable
+
+The composable returns a reactive object containing information about the current color theme.
+
+> [!WARNING]
+> Do not destruct the return value. Since it's a reactive object, reactivity will be lost.
+
+### Usage
+
 ```vue
 <script setup lang="ts">
 const colorMode = useColorMode()
