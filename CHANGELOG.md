@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.0.2
+
+[compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.0.1...v1.0.2)
+
+### 🏡 Chore
+
+- Fix typings ([fe014b1](https://github.com/Eschricht/nuxt-color-mode/commit/fe014b1))
+
+### ❤️ Contributors
+
+- Johannes Eschricht ([@Eschricht](http://github.com/Eschricht))
+
 ## v1.0.1
 
 ## v1.1.1
