@@ -30,15 +30,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: corepack enable
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: corepack enable
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Setuo
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Setup
         run: pnpm dev:prepare
 
       - name: Test
