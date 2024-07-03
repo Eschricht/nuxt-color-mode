@@ -9,6 +9,11 @@
     --bg: #fff;
   }
 
+  &.pink {
+    --color: #fff;
+    --bg: #ff69b4;
+  }
+
   body {
     background-color: var(--bg);
     color: var(--color);

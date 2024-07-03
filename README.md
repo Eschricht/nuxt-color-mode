@@ -7,9 +7,9 @@
 
 🌃 Dark and 🌞 Light mode with auto detection (even on server side!) made easy
 
-This module is similar to the official module [@nuxt/color-mode](https://color-mode.nuxtjs.org/) but with cookie support and server side system preference (via `sec-ch-prefers-color-scheme` header), making sure that the rendered theme on the server and client is always in sync.
+This module is similar to the official module [@nuxtjs/color-mode](https://color-mode.nuxtjs.org/) but with cookie support and server side system preference (via `sec-ch-prefers-color-scheme` header), making sure that the rendered theme on the server and client is always in sync.
 
-It currently lack many features compared to the official module, for example, not being able to force a color mode for a specific page.
+It's not a 1:1 port of `@nuxtjs/color-mode` so expect a few API changes or missing features.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
 - [🏀 Online playground](https://stackblitz.com/github/Eschricht/nuxt-color-mode?file=playground%2Fapp.vue)
@@ -22,6 +22,7 @@ It currently lack many features compared to the official module, for example, no
 - 🍪 &nbsp;Cookie support
 - 🤖 &nbsp;Auto detect system [color mode](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-Prefers-Color-Scheme) (even on server side!)
 - 🎨 &nbsp;Customizable
+- 🌪️ &nbsp;Temporary force color mode on individual pages or actions
 
 ## Quick Setup
 
@@ -86,6 +87,46 @@ function changeColorMode() {
 </script>
 ```
 
+## Force color mode
+
+It's possible to temporarily force the color mode on specific pages or situations. This can be done in 3 ways:
+
+### definePageMeta
+
+```vue
+<script setup lang="ts">
+definePageMeta({
+  colorMode: 'pink'
+})
+</script>
+```
+
+### Composable
+
+```vue
+<script setup lang="ts">
+const { forceColorMode } = useColorMode()
+
+function handleError() {
+  forceColorMode('error')
+}
+
+function resetError() {
+  // Reset
+  forceColorMode()
+}
+</script>
+```
+
+### $colorMode.forcedValue
+
+```vue
+<template>
+  <div>
+    <button @click="$colorMode.forcedValue = 'pink'">FORCE 🌪️</button>
+  </div>
+</template>
+```
 
 ## Contribution
 

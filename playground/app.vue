@@ -1,32 +1,20 @@
 <template>
   <div>
-    Nuxt module playground!
+    <p>Nuxt module playground!</p>
 
     <div>
-      <pre><code>{{ $colorMode }}</code></pre>
+      <NuxtLink to="/">
+        Home
+      </NuxtLink>
+      -
+      <NuxtLink to="/forced">
+        Forced color mode
+      </NuxtLink>
     </div>
 
-    <div>
-      <button @click="toggleColorMode">
-        toggle
-      </button>
-    </div>
-
-    <div>
-      <button @click="colorMode.preference = 'system'">
-        system
-      </button>
-    </div>
+    <NuxtPage />
   </div>
 </template>
 
 <script setup lang="ts">
-const colorMode = useColorMode()
-
-function toggleColorMode() {
-  if (colorMode.value === 'dark')
-    colorMode.preference = 'light'
-  else
-    colorMode.preference = 'dark'
-}
 </script>
