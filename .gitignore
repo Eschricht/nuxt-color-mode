@@ -56,4 +56,4 @@ Temporary Items
 .apdisk
 
 # Playwright
-test-results/*
+test-results
