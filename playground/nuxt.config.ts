@@ -3,16 +3,20 @@ export default defineNuxtConfig({
 
   colorMode: {
     preference: 'system',
-    classSuffix: '-hanniz',
-    classPrefix: 'hanniz-',
+    classSuffix: '',
+    classPrefix: '',
     cookieName: 'hanniz-color-mode',
-    cookieOptions: {
-      secure: true,
-    },
     dataValue: 'hanniz-color-mode',
     fallback: 'dark',
-    systemDarkName: 'pale-dark',
-    systemLightName: 'pale-light',
   },
+
+  css: ['~/assets/css/main.css'],
+
+  postcss: {
+    plugins: {
+      'postcss-nested': {},
+    },
+  },
+
   devtools: { enabled: true },
 })

@@ -29,7 +29,8 @@
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "release": "pnpm run lint && pnpm run test && pnpm run prepack && changelogen --release && pnpm publish --access public && git push --follow-tags",
     "lint": "eslint .",
-    "test": "vitest run",
+    "test": "vitest run --disable-console-intercept --reporter=basic",
+    "test:e2e": "playwright test --ui",
     "test:watch": "vitest watch",
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
@@ -42,11 +43,13 @@
     "@nuxt/module-builder": "^0.8.1",
     "@nuxt/schema": "^3.12.2",
     "@nuxt/test-utils": "^3.13.1",
+    "@playwright/test": "^1.45.1",
     "@types/node": "^20.14.9",
     "changelogen": "^0.5.5",
     "eslint": "^9.6.0",
     "nitropack": "^2.9.7",
     "nuxt": "^3.12.2",
+    "postcss-nested": "^6.0.1",
     "typescript": "latest",
     "vitest": "^1.6.0",
     "vue-tsc": "^2.0.24"

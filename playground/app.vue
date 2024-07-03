@@ -13,7 +13,7 @@
     </div>
 
     <div>
-      <button @click="$colorMode.preference = 'system'">
+      <button @click="colorMode.preference = 'system'">
         system
       </button>
     </div>
@@ -24,7 +24,7 @@
 const colorMode = useColorMode()
 
 function toggleColorMode() {
-  if (colorMode.preference === 'dark')
+  if (colorMode.value === 'dark')
     colorMode.preference = 'light'
   else
     colorMode.preference = 'dark'
