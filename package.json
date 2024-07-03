@@ -1,6 +1,6 @@
 {
   "name": "@eschricht/nuxt-color-mode",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Theme mode for Nuxt with SSR system preference auto detection",
   "private": false,
   "repository": {
@@ -27,10 +27,9 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "pnpm run lint && pnpm run test && pnpm run prepack && changelogen --release && pnpm publish --access public && git push --follow-tags",
+    "release": "pnpm run lint && pnpm run test:e2e && pnpm run prepack && changelogen --release && pnpm publish --access public && git push --follow-tags",
     "lint": "eslint .",
-    "test": "vitest run --disable-console-intercept --reporter=basic",
-    "test:e2e": "playwright test --ui",
+    "test:e2e": "playwright test",
     "test:watch": "vitest watch",
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },

@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.0.4
+
+[compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.0.3...v1.0.4)
+
+### 📖 Documentation
+
+- Add warning on destructuring the composable return value ([c2ae982](https://github.com/Eschricht/nuxt-color-mode/commit/c2ae982))
+
+### ✅ Tests
+
+- Added module tests ([20f5398](https://github.com/Eschricht/nuxt-color-mode/commit/20f5398))
+
+### ❤️ Contributors
+
+- Johannes Eschricht ([@Eschricht](http://github.com/Eschricht))
+
 ## v1.0.3
 
 [compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.0.2...v1.0.3)

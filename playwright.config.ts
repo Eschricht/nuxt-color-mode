@@ -18,7 +18,7 @@ const devicesToTest = [
 export default defineConfig<ConfigOptions>({
   testDir: './test',
   fullyParallel: true,
-  reporter: 'html',
+  reporter: 'dot',
   use: {
     trace: 'on-first-retry',
     nuxt: {
