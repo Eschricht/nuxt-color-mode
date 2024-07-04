@@ -1,6 +1,14 @@
 export default defineNuxtConfig({
   modules: ['../src/module'],
 
+  app: {
+    head: {
+      htmlAttrs: {
+        class: 'hanniz',
+      },
+    },
+  },
+
   colorMode: {
     preference: 'system',
     classSuffix: '',

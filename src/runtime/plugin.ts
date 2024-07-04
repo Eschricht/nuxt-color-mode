@@ -1,10 +1,15 @@
 import type { ColorModeState } from './composable'
+import { useClientPreferredColorScheme } from './useClientPreferredColorScheme'
 import { defineNuxtPlugin, useCookie, useRequestHeaders, useRouter } from '#app'
-import { useHead, useState, computed, reactive } from '#imports'
+import { useHead, useState, computed, reactive, type MaybeRef, unref } from '#imports'
 import { preference, cookieOptions, cookieName, classPrefix, classSuffix, dataValue, fallback, systemDarkName, systemLightName } from '#color-mode-options'
 
 function isValidSystemColorMode(value: string): value is 'dark' | 'light' {
   return ['dark', 'light'].includes(value)
+}
+
+function reverseValue(value: 'dark' | 'light') {
+  return value === 'dark' ? 'light' : 'dark'
 }
 
 export default defineNuxtPlugin<{
@@ -20,14 +25,13 @@ export default defineNuxtPlugin<{
 
   const systemValue = useState<'dark' | 'light' | undefined>('system', () => isValidSystemColorMode(header['sec-ch-prefers-color-scheme']) ? header['sec-ch-prefers-color-scheme'] : undefined)
   const forcedValue = useState<string | undefined>('forced', () => undefined)
+  const browserPreferredColorScheme = useClientPreferredColorScheme()
+
+  const systemValueResolved = computed(() => browserPreferredColorScheme.value ?? systemValue.value)
 
   const resolvedValue = computed(() => {
-    if (forcedValue.value) {
-      return forcedValue.value
-    }
-
-    if (cookieValue.value === 'system') {
-      switch (systemValue.value) {
+    if (forcedValue.value === 'system' || cookieValue.value === 'system') {
+      switch (systemValueResolved.value) {
         case 'dark':
           return systemDarkName
         case 'light':
@@ -37,12 +41,25 @@ export default defineNuxtPlugin<{
       }
     }
 
-    return cookieValue.value
+    return forcedValue.value || cookieValue.value
   })
+
+  function getClassName(value: MaybeRef<string>) {
+    return `${classPrefix}${unref(value)}${classSuffix}`
+  }
+
+  const className = computed(() => getClassName(resolvedValue.value))
+
+  // Cleanup mismatched system class between server and client (otherwise the HTML element will have dual system classes)
+  if (import.meta.client && document && (forcedValue.value === 'system' || cookieValue.value === 'system')) {
+    if (!document.documentElement.classList.contains(getClassName(resolvedValue))) {
+      document.documentElement.classList.remove(getClassName(reverseValue(resolvedValue.value as 'dark' | 'light')))
+    }
+  }
 
   useHead({
     htmlAttrs: {
-      class: () => `${classPrefix}${resolvedValue.value}${classSuffix}`,
+      class: className,
       ...dataValue ? { [`data-${dataValue}`]: resolvedValue } : {},
     },
   })
@@ -55,7 +72,7 @@ export default defineNuxtPlugin<{
     provide: {
       colorMode: reactive({
         preference: cookieValue,
-        system: systemValue,
+        system: systemValueResolved,
         value: resolvedValue,
         forcedValue,
       }),
