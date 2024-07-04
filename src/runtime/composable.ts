@@ -1,15 +1,33 @@
-import { useNuxtApp } from '#imports'
+import { reactive, toRefs, useNuxtApp } from '#imports'
 
 export interface ColorModeState {
+  forcedValue: string | undefined
   preference: string
   readonly system: 'dark' | 'light' | undefined
   readonly value: string
 }
 
-export function useColorMode(): ColorModeState {
-  const { $colorMode } = useNuxtApp()
+export function useColorMode() {
+  const { $colorMode } = useNuxtApp() as ReturnType<typeof useNuxtApp> & { $colorMode: ColorModeState }
 
-  return $colorMode
+  const {
+    forcedValue,
+    preference,
+    system,
+    value,
+  } = toRefs($colorMode)
+
+  const forceColorMode = (value?: string | undefined) => {
+    forcedValue.value = value || undefined
+  }
+
+  return reactive({
+    forcedValue,
+    preference,
+    system,
+    value,
+    forceColorMode,
+  }) as typeof $colorMode & { forceColorMode: (value: string) => void }
 }
 
 export default useColorMode

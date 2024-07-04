@@ -1,5 +1,5 @@
 import type { ColorModeState } from './composable'
-import { defineNuxtPlugin, useCookie, useRequestHeaders } from '#app'
+import { defineNuxtPlugin, useCookie, useRequestHeaders, useRouter } from '#app'
 import { useHead, useState, computed, reactive } from '#imports'
 import { preference, cookieOptions, cookieName, classPrefix, classSuffix, dataValue, fallback, systemDarkName, systemLightName } from '#color-mode-options'
 
@@ -16,10 +16,16 @@ export default defineNuxtPlugin<{
   })
 
   const header = useRequestHeaders()
+  const router = useRouter()
 
   const systemValue = useState<'dark' | 'light' | undefined>('system', () => isValidSystemColorMode(header['sec-ch-prefers-color-scheme']) ? header['sec-ch-prefers-color-scheme'] : undefined)
+  const forcedValue = useState<string | undefined>('forced', () => undefined)
 
   const resolvedValue = computed(() => {
+    if (forcedValue.value) {
+      return forcedValue.value
+    }
+
     if (cookieValue.value === 'system') {
       switch (systemValue.value) {
         case 'dark':
@@ -41,12 +47,17 @@ export default defineNuxtPlugin<{
     },
   })
 
+  router.beforeEach((to) => {
+    forcedValue.value = to.meta.colorMode
+  })
+
   return {
     provide: {
       colorMode: reactive({
         preference: cookieValue,
         system: systemValue,
         value: resolvedValue,
+        forcedValue,
       }),
     },
   }
