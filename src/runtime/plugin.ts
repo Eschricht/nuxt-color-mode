@@ -8,6 +8,10 @@ function isValidSystemColorMode(value: string): value is 'dark' | 'light' {
   return ['dark', 'light'].includes(value)
 }
 
+function reverseValue(value: 'dark' | 'light') {
+  return value === 'dark' ? 'light' : 'dark'
+}
+
 export default defineNuxtPlugin<{
   colorMode: ColorModeState
 }>((_nuxtApp) => {
@@ -18,8 +22,6 @@ export default defineNuxtPlugin<{
 
   const header = useRequestHeaders()
   const router = useRouter()
-
-  const reverseValue = (value: 'dark' | 'light') => (value === 'dark' ? 'light' : 'dark')
 
   const systemValue = useState<'dark' | 'light' | undefined>('system', () => isValidSystemColorMode(header['sec-ch-prefers-color-scheme']) ? header['sec-ch-prefers-color-scheme'] : undefined)
   const forcedValue = useState<string | undefined>('forced', () => undefined)
