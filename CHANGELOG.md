@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v1.1.0
+
+[compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.0.5...v1.1.0)
+
+### 🚀 Enhancements
+
+- Force color mode ([#2](https://github.com/Eschricht/nuxt-color-mode/pull/2))
+
+### 🏡 Chore
+
+- Modify .gitignore ([c03840a](https://github.com/Eschricht/nuxt-color-mode/commit/c03840a))
+- Remove test-results ([6304545](https://github.com/Eschricht/nuxt-color-mode/commit/6304545))
+- Update ci test pipeline ([51a9113](https://github.com/Eschricht/nuxt-color-mode/commit/51a9113))
+- Update ci test pipeline to install playwright browsers ([2c81f5a](https://github.com/Eschricht/nuxt-color-mode/commit/2c81f5a))
+- Update .gitignore to include playwright reports ([798dbb3](https://github.com/Eschricht/nuxt-color-mode/commit/798dbb3))
+
+### ❤️ Contributors
+
+- Johannes Eschricht ([@Eschricht](http://github.com/Eschricht))
+
 ## v1.0.5
 
 [compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.0.3...v1.0.5)
