@@ -1,6 +1,6 @@
 {
   "name": "@eschricht/nuxt-color-mode",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Theme mode for Nuxt with SSR system preference auto detection",
   "private": false,
   "repository": {
