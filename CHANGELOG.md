@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.1.5
+
+[compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.1.4...v1.1.5)
+
+### 🏡 Chore
+
+- Improve class name normalization ([e7d4cc4](https://github.com/Eschricht/nuxt-color-mode/commit/e7d4cc4))
+
+### ❤️ Contributors
+
+- Johannes Eschricht ([@Eschricht](http://github.com/Eschricht))
+
 ## v1.1.4
 
 [compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.1.3...v1.1.4)
