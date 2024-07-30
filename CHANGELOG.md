@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.1.4
+
+[compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.1.3...v1.1.4)
+
+### 🏡 Chore
+
+- Normalize class name to replace and omit non-valid characters ([559a5a5](https://github.com/Eschricht/nuxt-color-mode/commit/559a5a5))
+
+### ❤️ Contributors
+
+- Johannes Eschricht ([@Eschricht](http://github.com/Eschricht))
+
 ## v1.1.3
 
 [compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.1.2...v1.1.3)
