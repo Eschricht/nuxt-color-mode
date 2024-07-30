@@ -4,6 +4,22 @@ import { defineNuxtPlugin, useCookie, useRequestHeaders, useRouter } from '#app'
 import { useHead, useState, computed, reactive, type MaybeRef, unref } from '#imports'
 import { preference, cookieOptions, cookieName, classPrefix, classSuffix, dataValue, fallback, systemDarkName, systemLightName } from '#color-mode-options'
 
+function normalizeClassName(value: string) {
+  // Replace uppercase letters with a dash followed by the lowercase letter
+  const kebabCase = value.replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+
+  // Replace non-alphanumeric characters with a dash
+  const normalized = kebabCase.replace(/[^a-z0-9-]/gi, '-')
+
+  // Remove leading and trailing dashes
+  const trimmed = normalized.replace(/^-+|-+$/g, '')
+
+  // Replace consecutive dashes with a single dash
+  const final = trimmed.replace(/-{2,}/g, '-')
+
+  return final.toLowerCase()
+}
+
 function isValidSystemColorMode(value: string): value is 'dark' | 'light' {
   return ['dark', 'light'].includes(value)
 }
@@ -45,10 +61,7 @@ export default defineNuxtPlugin<{
   })
 
   function getClassName(value: MaybeRef<string>) {
-    const unreffedValue = unref(value)
-
-    // Transform the value to a normalized class name, e.g. replace whitespace with dashes and all lowercase. Omit non-alphanumeric characters.
-    const normalizedValue = unreffedValue.replace(' ', '-').replace(/[^a-z0-9]/gi, '').toLowerCase()
+    const normalizedValue = normalizeClassName(unref(value))
 
     return `${classPrefix}${normalizedValue}${classSuffix}`
   }
