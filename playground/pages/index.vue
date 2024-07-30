@@ -11,11 +11,9 @@ function toggleColorMode() {
 
 <template>
   <div>
-    <ClientOnly>
-      <div>
-        <pre><code>{{ $colorMode }}</code></pre>
-      </div>
-    </ClientOnly>
+    <div>
+      <pre><code>{{ $colorMode }}</code></pre>
+    </div>
 
     <div>
       <button @click="toggleColorMode">

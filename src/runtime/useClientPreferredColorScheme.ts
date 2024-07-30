@@ -1,4 +1,4 @@
-import { computed, getCurrentScope, onScopeDispose, ref, watchEffect, type ComputedRef } from '#imports'
+import { computed, getCurrentScope, onNuxtReady, onScopeDispose, ref, useNuxtApp, watchEffect, type ComputedRef } from '#imports'
 
 function tryOnScopeDispose(fn: () => void) {
   if (getCurrentScope()) {
@@ -58,14 +58,21 @@ function usePreferredColorSchemeByColor(color: 'dark' | 'light') {
 }
 
 export function useClientPreferredColorScheme(): ComputedRef<'dark' | 'light' | undefined> {
-  if (import.meta.client) {
-    const dark = usePreferredColorSchemeByColor('dark')
-    const light = usePreferredColorSchemeByColor('light')
+  const nuxtApp = useNuxtApp()
+  const isHydrating = ref<undefined | boolean>(undefined)
 
-    return computed(() => {
+  onNuxtReady(() => {
+    isHydrating.value = import.meta.client ? nuxtApp.isHydrating : undefined
+  })
+
+  return computed(() => {
+    if (isHydrating.value === false) {
+      const dark = usePreferredColorSchemeByColor('dark')
+      const light = usePreferredColorSchemeByColor('light')
+
       return dark.value ? 'dark' : light.value ? 'light' : undefined
-    })
-  }
+    }
 
-  return computed(() => undefined)
+    return undefined
+  })
 }

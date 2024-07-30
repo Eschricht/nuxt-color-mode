@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     classPrefix: '',
     cookieName: 'hanniz-color-mode',
     dataValue: 'hanniz-color-mode',
-    fallback: 'dark',
+    fallback: 'light',
   },
 
   css: ['~/assets/css/main.css'],
