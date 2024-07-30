@@ -45,7 +45,12 @@ export default defineNuxtPlugin<{
   })
 
   function getClassName(value: MaybeRef<string>) {
-    return `${classPrefix}${unref(value)}${classSuffix}`
+    const unreffedValue = unref(value)
+
+    // Transform the value to a normalized class name, e.g. replace whitespace with dashes and all lowercase. Omit non-alphanumeric characters.
+    const normalizedValue = unreffedValue.replace(' ', '-').replace(/[^a-z0-9]/gi, '').toLowerCase()
+
+    return `${classPrefix}${normalizedValue}${classSuffix}`
   }
 
   const className = computed(() => getClassName(resolvedValue.value))
