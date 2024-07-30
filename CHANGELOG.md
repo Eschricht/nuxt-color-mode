@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.1.3
+
+[compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.1.2...v1.1.3)
+
+### 🏡 Chore
+
+- Resolve browser API color mode after hydration ([0123209](https://github.com/Eschricht/nuxt-color-mode/commit/0123209))
+
+### ❤️ Contributors
+
+- Johannes Eschricht ([@Eschricht](http://github.com/Eschricht))
+
 ## v1.1.2
 
 [compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.1.1...v1.1.2)
