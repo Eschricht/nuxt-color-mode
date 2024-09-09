@@ -128,6 +128,11 @@ function resetError() {
 </template>
 ```
 
+## Caveats
+
+`sec-ch-prefers-color-scheme` is an experimental header and has [limited browser support](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-Prefers-Color-Scheme#browser_compatibility).
+The preferred color scheme is also fetched from browser API (client side only) as a fallback which can cause a flash of color change.
+
 ## Contribution
 
 <details>
