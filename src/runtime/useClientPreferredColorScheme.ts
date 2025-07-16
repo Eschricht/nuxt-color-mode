@@ -1,4 +1,5 @@
-import { computed, getCurrentScope, onNuxtReady, onScopeDispose, ref, useNuxtApp, watchEffect, type ComputedRef } from '#imports'
+import type { ComputedRef } from '#imports'
+import { computed, getCurrentScope, onNuxtReady, onScopeDispose, ref, useNuxtApp, watchEffect } from '#imports'
 
 function tryOnScopeDispose(fn: () => void) {
   if (getCurrentScope()) {

@@ -1,5 +1,5 @@
-import { defineNuxtModule, addPlugin, createResolver, addTemplate, addImports } from '@nuxt/kit'
 import type { ModuleOptions } from './runtime/types'
+import { addImports, addPlugin, addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
 
 export default defineNuxtModule<Partial<ModuleOptions>>({
   meta: {

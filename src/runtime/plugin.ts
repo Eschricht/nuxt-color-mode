@@ -1,8 +1,8 @@
+import type { MaybeRef } from '#imports'
 import type { ColorModeState } from './composable'
+import { classPrefix, classSuffix, cookieName, cookieOptions, dataValue, fallback, preference, systemDarkName, systemLightName } from '#color-mode-options'
+import { computed, defineNuxtPlugin, reactive, unref, useCookie, useHead, useRequestHeaders, useRouter, useState } from '#imports'
 import { useClientPreferredColorScheme } from './useClientPreferredColorScheme'
-import { defineNuxtPlugin, useCookie, useRequestHeaders, useRouter } from '#app'
-import { useHead, useState, computed, reactive, type MaybeRef, unref } from '#imports'
-import { preference, cookieOptions, cookieName, classPrefix, classSuffix, dataValue, fallback, systemDarkName, systemLightName } from '#color-mode-options'
 
 function normalizeClassName(value: string) {
   // Replace uppercase letters with a dash followed by the lowercase letter
