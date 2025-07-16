@@ -20,8 +20,8 @@ function normalizeClassName(value: string) {
   return final.toLowerCase()
 }
 
-function isValidSystemColorMode(value: string): value is 'dark' | 'light' {
-  return ['dark', 'light'].includes(value)
+function isValidSystemColorMode(value?: string): value is 'dark' | 'light' {
+  return value ? ['dark', 'light'].includes(value) : false
 }
 
 function reverseValue(value: 'dark' | 'light') {
@@ -46,7 +46,7 @@ export default defineNuxtPlugin<{
   const systemValueResolved = computed(() => browserPreferredColorScheme.value ?? systemValue.value)
 
   const resolvedValue = computed(() => {
-    if (forcedValue.value === 'system' || cookieValue.value === 'system') {
+    if (forcedValue.value === 'system' || (!forcedValue.value && cookieValue.value === 'system')) {
       switch (systemValueResolved.value) {
         case 'dark':
           return systemDarkName
@@ -61,7 +61,7 @@ export default defineNuxtPlugin<{
   })
 
   function getClassName(value: MaybeRef<string>) {
-    const normalizedValue = normalizeClassName(unref(value))
+    const normalizedValue = normalizeClassName(unref(value) || preference || '')
 
     return `${classPrefix}${normalizedValue}${classSuffix}`
   }
