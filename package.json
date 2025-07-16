@@ -1,7 +1,7 @@
 {
   "name": "@eschricht/nuxt-color-mode",
   "type": "module",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "private": false,
   "packageManager": "pnpm@9.4.0",
   "description": "Theme mode for Nuxt with SSR system preference auto detection",

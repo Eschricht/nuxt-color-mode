@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.2.0
+
+[compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.1.5...v1.2.0)
+
+### 🩹 Fixes
+
+- Update package.json export fields ([6a617b1](https://github.com/Eschricht/nuxt-color-mode/commit/6a617b1))
+
+### 🏡 Chore
+
+- **release:** V1.1.5 ([712dfde](https://github.com/Eschricht/nuxt-color-mode/commit/712dfde))
+- Update README.md with caveats section ([43822a8](https://github.com/Eschricht/nuxt-color-mode/commit/43822a8))
+
+### ❤️ Contributors
+
+- Johannes Eschricht ([@Eschricht](https://github.com/Eschricht))
+
 ## v1.1.5
 
 [compare changes](https://github.com/Eschricht/nuxt-color-mode/compare/v1.1.4...v1.1.5)
