@@ -1,5 +1,7 @@
 export default defineNuxtConfig({
-  modules: ['../src/module'],
+  modules: ['../src/module', '@nuxt/eslint'],
+
+  devtools: { enabled: true },
 
   app: {
     head: {
@@ -8,6 +10,8 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  css: ['~/assets/css/main.css'],
 
   colorMode: {
     preference: 'system',
@@ -18,7 +22,9 @@ export default defineNuxtConfig({
     fallback: 'light',
   },
 
-  css: ['~/assets/css/main.css'],
+  future: {
+    compatibilityVersion: 4,
+  },
 
   postcss: {
     plugins: {
@@ -26,5 +32,9 @@ export default defineNuxtConfig({
     },
   },
 
-  devtools: { enabled: true },
+  eslint: {
+    config: {
+      standalone: false,
+    },
+  },
 })

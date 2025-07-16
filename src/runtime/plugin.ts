@@ -1,8 +1,8 @@
+import type { MaybeRef } from '#imports'
 import type { ColorModeState } from './composable'
+import { classPrefix, classSuffix, cookieName, cookieOptions, dataValue, fallback, preference, systemDarkName, systemLightName } from '#color-mode-options'
+import { computed, defineNuxtPlugin, reactive, unref, useCookie, useHead, useRequestHeaders, useRouter, useState } from '#imports'
 import { useClientPreferredColorScheme } from './useClientPreferredColorScheme'
-import { defineNuxtPlugin, useCookie, useRequestHeaders, useRouter } from '#app'
-import { useHead, useState, computed, reactive, type MaybeRef, unref } from '#imports'
-import { preference, cookieOptions, cookieName, classPrefix, classSuffix, dataValue, fallback, systemDarkName, systemLightName } from '#color-mode-options'
 
 function normalizeClassName(value: string) {
   // Replace uppercase letters with a dash followed by the lowercase letter
@@ -20,8 +20,8 @@ function normalizeClassName(value: string) {
   return final.toLowerCase()
 }
 
-function isValidSystemColorMode(value: string): value is 'dark' | 'light' {
-  return ['dark', 'light'].includes(value)
+function isValidSystemColorMode(value?: string): value is 'dark' | 'light' {
+  return value ? ['dark', 'light'].includes(value) : false
 }
 
 function reverseValue(value: 'dark' | 'light') {
@@ -46,7 +46,7 @@ export default defineNuxtPlugin<{
   const systemValueResolved = computed(() => browserPreferredColorScheme.value ?? systemValue.value)
 
   const resolvedValue = computed(() => {
-    if (forcedValue.value === 'system' || cookieValue.value === 'system') {
+    if (forcedValue.value === 'system' || (!forcedValue.value && cookieValue.value === 'system')) {
       switch (systemValueResolved.value) {
         case 'dark':
           return systemDarkName
@@ -61,7 +61,7 @@ export default defineNuxtPlugin<{
   })
 
   function getClassName(value: MaybeRef<string>) {
-    const normalizedValue = normalizeClassName(unref(value))
+    const normalizedValue = normalizeClassName(unref(value) || preference || '')
 
     return `${classPrefix}${normalizedValue}${classSuffix}`
   }

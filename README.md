@@ -123,7 +123,9 @@ function resetError() {
 ```vue
 <template>
   <div>
-    <button @click="$colorMode.forcedValue = 'pink'">FORCE 🌪️</button>
+    <button @click="$colorMode.forcedValue = 'pink'">
+      FORCE 🌪️
+    </button>
   </div>
 </template>
 ```
@@ -137,33 +139,32 @@ The preferred color scheme is also fetched from browser API (client side only) a
 
 <details>
   <summary>Local development</summary>
-  
+
   ```bash
   # Install dependencies
   pnpm install
-  
+
   # Generate type stubs
   pnpm run dev:prepare
-  
+
   # Develop with the playground
   pnpm run dev
-  
+
   # Build the playground
   pnpm run dev:build
-  
+
   # Run ESLint
   pnpm run lint
-  
+
   # Run Vitest
   pnpm run test
   pnpm run test:watch
-  
+
   # Release new version
   pnpm run release
   ```
 
 </details>
-
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/@eschricht/nuxt-color-mode/latest.svg?style=flat&colorA=020420&colorB=00DC82
